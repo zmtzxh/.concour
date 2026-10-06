@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOT DE PASSE</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #0b0b0b);
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 300px; /* Réduit un peu la largeur max */
+            padding: 15px;
+        }
+
+        .top-image {
+            max-width: 100px; /* Réduit la taille de l'image (environ 0.6x) */
+            height: auto;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 16px; /* Réduit de ~24px à 16px */
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 10px; /* Réduit de ~14px à 10px */
+            color: #a0a0a0;
+            margin-bottom: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px 10px; /* Plus compact */
+            background-color: #121212;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 12px; /* Texte du champ plus petit */
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            border-color: #666666;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px; /* Plus compact */
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px; /* Texte du bouton plus petit */
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #dcdcdc;
+        }
+
+        /* Écran secondaire (caché par défaut) */
+        #screen-2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÉCRAN 1 : Connexion -->
+    <div class="container" id="screen-1">
+        <!-- Image placée tout en haut -->
+        <img src="images/Image PNG.png" alt="Logo" class="top-image">
+        
+        <h1>MOT DE PASSE</h1>
+        <p>entrer le mot de passe</p>
+        
+        <div class="input-group">
+            <input type="text" id="passwordInput" placeholder="Tapez ici...">
+            <button onclick="checkPassword()">Valider</button>
+        </div>
+    </div>
+
+    <!-- ÉCRAN 2 : Contenu après le mot de passe (modifiable plus tard) -->
+    <div class="container" id="screen-2">
+        <h1>Bienvenue !</h1>
+        <p>Mot de passe correct.</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const inputVal = document.getElementById('passwordInput').value;
+            const correctPassword = "w2209WojKach999.jj";
+
+            if (inputVal === correctPassword) {
+                document.getElementById('screen-1').style.display = 'none';
+                document.getElementById('screen-2').style.display = 'block';
+            } else {
+                alert("Mot de passe incorrect");
+            }
+        }
+    </script>
+
+</body>
+</html>
