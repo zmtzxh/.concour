@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MOT DE PASSE</title>
+    
+    <!-- Paramètres pour forcer le mode sombre et la couleur du thème -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Force le fond de la page en noir uni (plus efficace sur iOS pour les bandes) */
+        html, body {
+            background-color: #000000;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Empêche le défilement pour stabiliser l'affichage */
+            position: fixed; /* Important pour éviter les bandes sur Safari */
+        }
+
+        /* Conteneur principal centré */
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(135deg, #000000, #0b0b0b); /* Dégradé demandé */
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 280px; /* Légèrement plus compact */
+            padding: 20px;
+        }
+
+        .top-image {
+            max-width: 90px; /* Taille conservée */
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 10px;
+            color: #888888;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a1a1a; /* Fond du champ plus sombre */
+            border: none; /* Supprime la bordure pour un look plus moderne */
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="text"]::placeholder {
+            color: #555555;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Écran secondaire (caché par défaut) */
+        #screen-2 {
+            display: none;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Wrapper principal pour s'assurer que tout le fond est noir -->
+    <div class="main-wrapper">
+        <!-- ÉCRAN 1 : Connexion -->
+        <div class="container" id="screen-1">
+            <img src="images/Image PNG.png" alt="Image" class="top-image">
+            
+            <h1>MOT DE PASSE</h1>
+            <p>entrer le mot de passe</p>
+            
+            <div class="input-group">
+                <input type="text" id="passwordInput" placeholder="Tapez ici...">
+                <button onclick="checkPassword()">Valider</button>
+            </div>
+        </div>
+
+        <!-- ÉCRAN 2 : Contenu après le mot de passe -->
+        <div class="container" id="screen-2">
+            <h1>Bienvenue !</h1>
+            <p>Accès autorisé.</p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const inputVal = document.getElementById('passwordInput').value;
+            const correctPassword = "w2209WojKach999.jj";
+
+            if (inputVal === correctPassword) {
+                document.getElementById('screen-1').style.display = 'none';
+                document.getElementById('screen-2').style.display = 'block';
+            } else {
+                alert("Mot de passe incorrect");
+            }
+        }
+
+        // Empêche le zoom sur iOS
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
